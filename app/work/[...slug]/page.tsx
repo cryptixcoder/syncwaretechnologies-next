@@ -27,7 +27,7 @@ export default async function WorkPage({ params }: PostPageProps) {
                 <h1 className="text-5xl lg:text-8xl font-display font-semibold mb-5 lg:max-w-4xl uppercase pr-5">{ caseStudy.title }</h1>
                 
                 {caseStudy.provided && (
-                    <h5 className="text-sm md:text-xl text-primary-600 font-bold uppercase">{ caseStudy.provided }</h5>
+                    <h5 className="text-sm md:text-xl max-w-[530px] text-primary-600 font-bold uppercase">{ caseStudy.provided }</h5>
                 )}
                 
                 <div className="mb-10 md:mb-0 flex flex-col flex-shrink">

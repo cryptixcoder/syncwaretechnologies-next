@@ -55,9 +55,9 @@ export default async function BlogPage({params}: PostPageProps) {
     const post = await getPostFromParams(params);
     
     return (
-        <div className="container max-w-6xl grid grid-cols-2 py-36">
+        <div className="container max-w-6xl grid grid-cols-1 md:grid-cols-2 py-10 md:py-36 px-10 md:px-0">
             <div className="md:h-screen md:sticky md:top-0">
-                <h3 className="text-slate-900 text-5xl lg:text-8xl font-display font-semibold mb-5 lg:max-w-4xl uppercase">{ post.title }</h3>
+                <h1 className="text-5xl lg:text-[5rem] font-display font-semibold mb-5 lg:max-w-4xl uppercase pr-5">{ post.title }</h1>
                 <img src={post.cover} alt="" className="w-2/3" />
             </div>
             <div>
