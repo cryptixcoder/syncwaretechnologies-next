@@ -1,5 +1,5 @@
 import { Metadata } from 'next'
-import {Services, services} from '#site/content'
+import {Services as ServicesProps, services} from '#site/content'
 import { sortByPosition } from '@/lib'
 
 export const metadata:Metadata = {
@@ -7,7 +7,7 @@ export const metadata:Metadata = {
 }
 
 export default function Services() {
-    const sortedServices:Array<Services> = sortByPosition(services);
+    const sortedServices:Array<ServicesProps> = sortByPosition(services);
 
     return (
         <div className="container max-w-6xl grid grid-cols-1 md:grid-cols-2 py-10 md:py-36 px-10 md:px-0">

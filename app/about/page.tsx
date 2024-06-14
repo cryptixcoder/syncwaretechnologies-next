@@ -1,5 +1,6 @@
 import { members } from '#site/content'
 import { Metadata } from 'next'
+import Image from 'next/image'
 
 export const metadata:Metadata = {
     title: "About Us"
@@ -17,7 +18,7 @@ export default function About() {
                     return (
                         <div key={member.slug} className="grid gap-4 grid-cols-1 md:grid-cols-12 mb-10">
                             <div className="col-span-5">
-                                <img src={member.headshot} alt="" className="w-full" />
+                                <Image src={member.headshot} width={230} height={230} alt={member.title} className="w-full" />
                             </div>
                             <div className="col-span-7 flex flex-col justify-center">
                                 <h5 className="text-sm text-primary-600 font-bold uppercase">{member.position}</h5>
