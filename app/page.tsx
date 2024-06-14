@@ -33,7 +33,7 @@ export default async function Home() {
         <div className="grid grid-cols-1 lg:grid-cols-3 ">
           {featuredPosts.map((featured) => {
             return (
-              <div className="col-span-1 bg-center bg-cover bg-no-repeat" style={{ backgroundImage: `url(${featured.cover})` }}>
+              <div key={featured.slug} className="col-span-1 bg-center bg-cover bg-no-repeat" style={{ backgroundImage: `url(${featured.cover})` }}>
                 <Link href={ featured.permalink }> 
                   <div className="py-72 bg-black bg-opacity-50 h-full">
                     <h2 className="font-display text-white text-center text-semibold text-4xl">{featured.title}</h2>

@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unescaped-entities */
 import {caseStudies} from '#site/content'
 import { Metadata } from 'next'
 import Link from 'next/link'
