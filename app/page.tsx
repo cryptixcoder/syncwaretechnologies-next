@@ -1,113 +1,80 @@
 import Image from "next/image";
+import { caseStudies, services } from '#site/content';
+import Link from 'next/link';
+import { sortByPosition } from '@/lib';
 
-export default function Home() {
+async function getFeaturedCaseStudies() {
+  const posts = caseStudies.filter((caseStudy) => caseStudy.featured === true);
+
+  return posts
+}
+
+export default async function Home() {
+  const featuredPosts = await getFeaturedCaseStudies();
+  const sortedServices = sortByPosition(services);
+
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <div className="z-10 w-full max-w-5xl items-center justify-between font-mono text-sm lg:flex">
-        <p className="fixed left-0 top-0 flex w-full justify-center border-b border-gray-300 bg-gradient-to-b from-zinc-200 pb-6 pt-8 backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit lg:static lg:w-auto  lg:rounded-xl lg:border lg:bg-gray-200 lg:p-4 lg:dark:bg-zinc-800/30">
-          Get started by editing&nbsp;
-          <code className="font-mono font-bold">app/page.tsx</code>
-        </p>
-        <div className="fixed bottom-0 left-0 flex h-48 w-full items-end justify-center bg-gradient-to-t from-white via-white dark:from-black dark:via-black lg:static lg:size-auto lg:bg-none">
-          <a
-            className="pointer-events-none flex place-items-center gap-2 p-8 lg:pointer-events-auto lg:p-0"
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{" "}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className="dark:invert"
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
+    <>
+      <main>
+        <div className="px-5 py-20 bg-slate-900 text-white flex items-center">
+          <div className="container max-w-6xl">
+            <h2 className="font-sans text-4xl">We are</h2>
+            <h1 className="text-6xl md:text-8xl font-display font-semibold mb-5 max-w-4xl">Syncware Technologies, Inc.</h1>
+            <p className="text-2xl max-w-3xl">A digital product design & solutions agency focused on creating award winning products using human centered design and cutting edge technology.</p>
+          </div>
         </div>
-      </div>
 
-      <div className="relative z-[-1] flex place-items-center before:absolute before:h-[300px] before:w-full before:-translate-x-1/2 before:rounded-full before:bg-gradient-radial before:from-white before:to-transparent before:blur-2xl before:content-[''] after:absolute after:-z-20 after:h-[180px] after:w-full after:translate-x-1/3 after:bg-gradient-conic after:from-sky-200 after:via-blue-200 after:blur-2xl after:content-[''] before:dark:bg-gradient-to-br before:dark:from-transparent before:dark:to-blue-700 before:dark:opacity-10 after:dark:from-sky-900 after:dark:via-[#0141ff] after:dark:opacity-40 sm:before:w-[480px] sm:after:w-[240px] before:lg:h-[360px]">
-        <Image
-          className="relative dark:drop-shadow-[0_0_0.3rem_#ffffff70] dark:invert"
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-      </div>
+        <div className="px-5 lg:px-0 py-10 md:py-36 container flex flex-col items-center">
+          <h3 className="text-center text-xl md:text-2xl font-display font-semibold mb-3 uppercase">Your Technology and Brand partner is here</h3>
+          <p className="text-lg md:text-2xl text-center max-w-3xl">Syncware Technologies partners with Startups and Small to Medium
+          businesses to help them build their brands and products.</p>
+        </div>
 
-      <div className="mb-32 grid text-center lg:mb-0 lg:w-full lg:max-w-5xl lg:grid-cols-4 lg:text-left">
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className="mb-3 text-2xl font-semibold">
-            Docs{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className="m-0 max-w-[30ch] text-sm opacity-50">
-            Find in-depth information about Next.js features and API.
-          </p>
-        </a>
+        <div className="grid grid-cols-1 lg:grid-cols-3 ">
+          {featuredPosts.map((featured) => {
+            return (
+              <div className="col-span-1 bg-center bg-cover bg-no-repeat" style={{ backgroundImage: `url(${featured.cover})` }}>
+                <Link href={ featured.permalink }> 
+                  <div className="py-72 bg-black bg-opacity-50 h-full">
+                    <h2 className="font-display text-white text-center text-semibold text-4xl">{featured.title}</h2>
+                  </div>
+                </Link>
+            </div>
+            )
+          })}
+        </div>
 
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className="mb-3 text-2xl font-semibold">
-            Learn{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className="m-0 max-w-[30ch] text-sm opacity-50">
-            Learn about Next.js in an interactive course with&nbsp;quizzes!
-          </p>
-        </a>
+        <div className="px-5 bg-primary-700">
+          <div className="container text-white max-w-4xl py-20">
+            <p className="text-xl mb-5">In developing a hybrid mobile application for a client, Syncware Technologies was able to promptly step in, manage preset functions, guide our team on best practices and be a vital part in pushing our product to completion.  </p>
+            <h3 className="text-semibold font-display text-3xl">Jaret Wilson</h3>
+            <h4 className="text-semibold font-display text-3xl">CEO | The Wilson Concept</h4>
+          </div>
+        </div>
 
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className="mb-3 text-2xl font-semibold">
-            Templates{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className="m-0 max-w-[30ch] text-sm opacity-50">
-            Explore starter templates for Next.js.
-          </p>
-        </a>
 
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className="mb-3 text-2xl font-semibold">
-            Deploy{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className="m-0 max-w-[30ch] text-balance text-sm opacity-50">
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
-      </div>
-    </main>
+        <div className="px-10 lg:px-0 py-10 lg:py-36">
+          <div className="container max-w-6xl grid grid-cols-1 lg:grid-cols-2">
+            <div className="mb-10 lg:mb-0">
+              <h3 className="text-5xl md:text-7xl lg:text-8xl font-display font-semibold mb-5 lg:max-w-4xl uppercase">What we do<span className="text-primary-700">.</span></h3>
+            </div>
+            <div>
+              {sortedServices.map((service) => {
+                return (
+                  <div key={service.position} className="grid grid-cols-1 md:grid-cols-12 gap-4 mb-10">
+                    <div className="col-span-5">
+                      <h3 className="text-4xl font-display uppercase">{ service.title}</h3>
+                    </div>
+                    <div className="col-span-7">
+                      <p className="text-lg font-light">{ service.description }</p>
+                    </div>
+                  </div>
+                )
+              })}
+            </div>
+          </div>
+        </div>
+      </main>
+    </>
   );
 }
