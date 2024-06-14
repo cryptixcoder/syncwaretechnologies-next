@@ -15,7 +15,7 @@ export default function Services() {
                 <h3 className="mb-10 md:mb-0 text-5xl lg:text-8xl font-display font-semibold mb-5 lg:max-w-4xl uppercase">What we <br/>do<span className="text-primary-600">.</span></h3>
             </div>
             <div>
-                {sortedServices.map((service:Services) => (
+                {sortedServices.map((service:ServicesProps) => (
                     <div key={service.position} className="grid grid-cols-1 md:grid-cols-12 gap-4 mb-10">
                         <div className="col-span-5">
                             <h3 className="text-4xl font-display uppercase">{service.title}</h3>
