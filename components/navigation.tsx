@@ -19,6 +19,7 @@ export const Navigation = () => {
                             <Link href="/work" className="uppercase hover:underline">Our Work</Link>
                             <Link href="/services" className="uppercase hover:underline">Our Services</Link>
                             <Link href="/about" className="uppercase hover:underline">About Us</Link>
+                            <Link href="https://ontap.syncwaretechnologies.com" className="uppercase hover:underline">On-Tap</Link>
                             <Link href="/blog" className="uppercase hover:underline">Blog</Link>
                         </nav>
                         <div className="mr-5 md:-mr-2 flex items-center sm:hidden">

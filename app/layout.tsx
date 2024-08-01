@@ -4,6 +4,7 @@ import {Navigation} from '@/components/navigation';
 import { Footer } from '@/components/footer';
 import { Contact } from '@/components/contact';
 import { siteConfig } from '@/config/site';
+import Banner from '@/components/Banner';
 
 
 export const metadata: Metadata = {
@@ -23,6 +24,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
+        <Banner />
         <Navigation />
         {children}
         <Contact />

@@ -34,12 +34,12 @@ export default async function Home() {
           {featuredPosts.map((featured) => {
             return (
               <div key={featured.slug} className="col-span-1 bg-center bg-cover bg-no-repeat" style={{ backgroundImage: `url(${featured.cover})` }}>
-                <Link href={ featured.permalink }> 
-                  <div className="py-72 bg-black bg-opacity-50 h-full">
-                    <h2 className="font-display text-white text-center text-semibold text-4xl">{featured.title}</h2>
-                  </div>
-                </Link>
-            </div>
+                  <Link href={ featured.permalink }> 
+                    <div className="py-72 bg-black bg-opacity-50 h-full">
+                      <h2 className="font-display text-white text-center text-semibold text-4xl">{featured.title}</h2>
+                    </div>
+                  </Link>
+              </div>
             )
           })}
         </div>
