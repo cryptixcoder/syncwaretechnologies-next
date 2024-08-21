@@ -3,40 +3,16 @@ title: "DNAID"
 slug: "dnaid"
 subtitle: "The next revolution of dating apps. It's time to Date Simple!"
 date: 2022-01-01
-description: "The next revolution of dating apps. It's time to Date Simple!"
-cover: "/work/date-simple/insta_posts-16.png"
+description: |
+  Like many people who want to know their ancestry, they buy a DNA kit from the various companies out there. But once you get that information you typically forget about the account and never really use it until you get an email notifying you of an update. The one thing most people overlook is that many of those services offers you a file that represents your DNA in their respective genetic pairs. When it comes to research, this data is invaluable in the fight to diagnose and treat illnesses. The problem is that researchers have a hard time finding individuals to connect with, let alone the expensive process of having to run the DNA labs from scratch for each person they sign on. Craig Calderone had the same idea and wanted to solve that issue using next-gen technology with DNAID and partnered with Syncware Technologies to build the MVP.
+deliverables: 
+- "React Native App"
+- "NodeJS API"
+- "Smart Contract"
+cover: "/work/dnaid-cover.png"
 website: "https://dnaid.co" 
 provided: "UI/UX Design, React Native Development, Etherium, Node.js, Web Development"
 featured: true
 ---
 
-## Problem
-
-Like many people who want to know their ancestry, they buy a DNA kit from the various companies out there. But once you get that information you typically forget about the account and never really use it until you get an email notifying you of an update. The one thing most people overlook is that many of those services offers you a file that represents your DNA in their respective genetic pairs. When it comes to research, this data is invaluable in the fight to diagnose and treat illnesses. The problem is that researchers have a hard time finding individuals to connect with, let alone the expensive process of having to run the DNA labs from scratch for each person they sign on. Craig Calderone had the same idea and wanted to solve that issue using next-gen technology with DNAID and partnered with Syncware Technologies to build the MVP.
-
-## Solution
-
-Though we knew from our initial kickoff meeting that we were going to be the app for iPhones, we knew that we wanted to ability to build for Android in the future. Being that our in-house goto for cross-platform mobile development was React Native the chose was clear. For the backend, since we were going to be interacting with the blockchain there were only a few choices to pick from that wouldn’t cause headaches down the road so we chose to work with Node.js since there were a healthy amount of quality open-sourced packages that would keep us from having to build everything from scratch. Once the tech stack was decided on, it was time to review the requirements for the MVP.
-
-When looking over the requirements, we knew that we had to solve 4 key items:
-
-1. DNA and Identity is very sensitive data and we needed to securely store this information, ensuring that we only gave researchers the information they needed that didn’t disclose this sensitive data
-2. The idea and concept of ownership, the problem with many services is that you don’t truly own your own data and you’re tied to them for the services that they provide and we wanted our users to feel empowered to participate with peace of mind knowing that they control their data.
-3. Getting the required based health data that researchers need in order to accept a participant
-4. To ensure anonymization while also providing paid incentives.
-
-### DNA & Identity & Payment
-
-We identified two key technologies that provided us with the solution we required, and that was ERC 721 tokens and IPFS (Inter Planetary File System). 
-
-### IPFS (Inter Planetary File System)
-
-IPFS is a blockchain technology that gives users similar object storage functionality like Amazon’s S3 or DigitalOcean’s Spaces. The key difference is that instead of having a human readable filename, you receive a hash. This hash has no distinct information about filetype or its contents and the only way to access it on the blockchain would be to have access to the hash itself. To ensure that if anyone got access to the system hashes that wouldn’t be able to read the DNA data, we implemented encryption using public and private keys. Each user has their own public and private key pair, and when data is passed between users they are decrypted and re-encrypted using the sending and receiving user’s keys.
-
-### DNA Token Smart Contract
-
-The Etherum blockchain was our first choice when it came to tokenizing a user’s DNA data being that at the time of development it was the most popular platform for smart contracts. In the Ethereum ecosystem, there are various types of tokens but one really fit our use case. In general, you’ll typically interact with ERC 720 token which are considered fungible tokens meaning that they all have the same value and type. We knew that this wouldn’t fit our purpose as fungible tokens are minted at the point of issuing the parent contract and we needed to be able to dynamically create tokens when we needed them. This lead us to the ERC 721 spec, the non-fungible token that crypto collectables are made from and allows for the value of said token to be defines as they are minted. 
-
-### Health Data
-
-Since this MVP was going to be an iPhone based product we knew that we’d have access to Apple’s HealthKit. For the MVP we wanted to narrow down 5 datapoints for a user’s profile, age, sex, height, weight, and BMI. Using HealthKit, we were able to accurately gather this information from the user’s phone and could be confident that when any of these datapoints changes that we would be able to update their information and to ensure privacy concerns users could choose to hide those metrics.
+![DNAID Mockup](/work/Mockup.png)

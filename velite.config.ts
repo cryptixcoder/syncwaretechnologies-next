@@ -40,6 +40,8 @@ export default defineConfig({
                 title: s.string(),
                 slug: s.slug('casestudies'),
                 subtitle: s.string(),
+                description: s.mdx().optional(),
+                deliverables: s.array(s.string()).optional(),
                 date: s.isodate(),
                 cover: s.string(),
                 content: s.mdx(),

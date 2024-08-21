@@ -1,0 +1,2 @@
+User-agent: *
+Sitemap: https://syncwaretechnologies.com/sitemap.xml

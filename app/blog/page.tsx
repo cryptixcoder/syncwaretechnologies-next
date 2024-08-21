@@ -41,20 +41,26 @@ export default function Blog({searchParams}:BlogPageProps) {
                         {displayPosts.map((post) => {
                             return (
                                 <div key={post.slug} className="mb-10">
-                                    <h2 className="text-2xl uppercase mb-2">
-                                        <Link href={post.permalink}>{post.title}</Link>
-                                    </h2>
-                                    
-                                    <p className="text-18 font-light">{post.summary}</p>
-                                    
-                                    <Link className="text-primary-700 text-18 font-bold uppercase mt-4"  href={post.permalink} >View Post</Link>
+                                    <div className="h-[150px] bg-center bg-cover mb-10 rounded-sm" style={{ backgroundImage: `url('${post.cover}')`}}>
+
+                                    </div>
+                                    <div>
+                                        <h2 className="text-2xl uppercase mb-2">
+                                            <Link href={post.permalink}>{post.title}</Link>
+                                        </h2>
+                                        
+                                        <p className="text-18 font-light mb-2">{post.summary}</p>
+                                        
+                                        <Link className="text-primary-700 text-18 font-bold uppercase mt-4 hover:underline hover:underline-offset-2"  href={post.permalink} >View Post</Link>
+                                    </div>
                                 </div>
                             )
                         })}
                     </>
                 ) : (
-                    <div>
-                        <h2>No Posts</h2>
+                    <div className='flex flex-col items-center justify-center'>
+                        <h2 className='uppercase font-semibold font-display text-2xl'>Check back soon</h2>
+                        <p>We're in the kitchen cooking up some great content!</p>
                     </div>
                 )}
                 <QueryPagination totalPages={totalPages} className='mt-9' />

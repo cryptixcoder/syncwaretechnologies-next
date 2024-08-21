@@ -53,18 +53,31 @@ export async function generateMetadata({params}: PostPageProps){
 
 export default async function BlogPage({params}: PostPageProps) {
     const post = await getPostFromParams(params);
-    
+    const backgroundImage = `url(${post.cover})`
+
+    const formattedDate = new Date(post.date).toLocaleDateString('en-US', {
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric'
+    });
+
     return (
-        <div className="container max-w-6xl grid grid-cols-1 md:grid-cols-2 py-10 md:py-36 px-10 md:px-0">
-            <div className="md:h-screen md:sticky md:top-0">
-                <h1 className="text-5xl lg:text-[5rem] font-display font-semibold mb-5 lg:max-w-4xl uppercase pr-5">{ post.title }</h1>
-                <img src={post.cover} alt="" className="w-2/3" />
+       <div>
+            <div className="container max-w-6xl py-[80px]">
+                <h1 className="text-center font-display text-[32px] md:text-[72px] leading-[44px] md:leading-[115px]">{post.title}</h1>
+                <p className="text-center">{formattedDate}</p>
             </div>
-            <div>
+            {post.cover && (
+                <div className="container max-w-6xl">
+                    <img src={post.cover} className="w-full" alt="" />
+                </div>
+            )}
+            
+            <div className="flex items-center justify-center py-[80px] px-4 md:px-0">
                 <div className="prose lg:prose-xl mb-10">
                     <MDXComponent code={post.content} />
                 </div>
             </div>
-        </div>
+       </div>
     )
 }

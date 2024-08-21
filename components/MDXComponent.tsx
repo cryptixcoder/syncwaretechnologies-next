@@ -1,5 +1,7 @@
 import Image from 'next/image';
 import * as runtime from 'react/jsx-runtime';
+import Container from './Container';
+import NarrowContainer from './NarrowContainer';
 
 const useMDXComponent = (code: string) => {
     const fn = new Function(code);
@@ -7,7 +9,9 @@ const useMDXComponent = (code: string) => {
 }
 
 const components = {
-    Image
+    Image,
+    Container,
+    NarrowContainer
 }
 
 interface MdxProps {

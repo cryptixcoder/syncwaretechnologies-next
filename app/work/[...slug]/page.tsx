@@ -2,10 +2,6 @@ import { caseStudies } from '@/.velite'
 import { MDXComponent } from '@/components/MDXComponent';
 import { Metadata } from 'next';
 
-export const metadata:Metadata = {
-    title: "Our Work"
-}
-
 interface PostPageProps {
     params: {
         slug: string[]
@@ -19,48 +15,69 @@ async function getPostFromParams(params: PostPageProps['params']) {
     return post;
 }
 
+export async function generateMetadata({params}: PostPageProps){
+    const post = await getPostFromParams(params);
+
+    if(!post) {
+        return {};
+    }
+
+    const ogSearchParams = new URLSearchParams();
+    ogSearchParams.set("title", post.title);
+
+    return {
+        title: post.title,
+        description: post.description,
+        openGraph: {
+            title: post.title,
+            description: post.description,
+            type: "article",
+            url: post.path,
+            images: [
+                    {
+                    url: `/api/og?${ogSearchParams.toString()}`,
+                    width: 1200,
+                    height: 630,
+                    alt: post.title,
+                    },
+                ],
+        },
+        twitter: {
+            card: "summary_large_image",
+            title: post.title,
+            description: post.description,
+            images: [`/api/og?${ogSearchParams.toString()}`],
+        },
+    }
+}
+
 export default async function WorkPage({ params }: PostPageProps) {
     const caseStudy = await getPostFromParams(params);
     return (
-        <div className="container max-w-6xl grid grid-cols-1 md:grid-cols-2 py-10 md:py-36 px-10 md:px-0">
-            <div className="pr-5 md:h-screen md:sticky md:top-0">
+        <div className="pb-[40px]">
+            {/* <div className="min-h-[500px] bg-cover bg-center bg-no-repeat border-b" style={{backgroundImage: `url('${caseStudy.cover}')`}}></div> */}
+            <div className="px-4 md:px-0 container max-w-6xl mt-[40px]">
                 <h1 className="text-5xl lg:text-8xl font-display font-semibold mb-5 lg:max-w-4xl uppercase pr-5">{ caseStudy.title }</h1>
-                
-                {caseStudy.provided && (
-                    <h5 className="text-sm md:text-xl max-w-[530px] text-primary-600 font-bold uppercase">{ caseStudy.provided }</h5>
-                )}
-                
-                <div className="mb-10 md:mb-0 flex flex-col flex-shrink">
-                
-                    {caseStudy.website && (
-                        <a href={caseStudy.website} target="_blank" className="mt-5 inline-flex items-center px-4 py-2 text-base font-medium ">
-                            <svg xmlns="http://www.w3.org/2000/svg" className="-ml-1 mr-3 h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-                                <path fill-rule="evenodd" d="M12.586 4.586a2 2 0 112.828 2.828l-3 3a2 2 0 01-2.828 0 1 1 0 00-1.414 1.414 4 4 0 005.656 0l3-3a4 4 0 00-5.656-5.656l-1.5 1.5a1 1 0 101.414 1.414l1.5-1.5zm-5 5a2 2 0 012.828 0 1 1 0 101.414-1.414 4 4 0 00-5.656 0l-3 3a4 4 0 105.656 5.656l1.5-1.5a1 1 0 10-1.414-1.414l-1.5 1.5a2 2 0 11-2.828-2.828l3-3z" clip-rule="evenodd" />
-                            </svg>
-                        Visit Website
-                        </a>
-                    )}
-
-                    {caseStudy.appStore && (
-                        <a href={caseStudy.appStore} target="_blank" className="mt-5 inline-flex items-center px-4 py-2 text-base font-medium ">
-
-                        <i className="fab fa-app-store mr-2"></i>
-
-                        Visit the App Store
-                        </a>
-                    )}
-
-                    {caseStudy.playStore && (
-                        <a href={caseStudy.playStore} target="_blank" className="mt-5 inline-flex items-center px-4 py-2 text-base font-medium ">
-            
-                        <i className="fab fa-google-play mr-2"></i>
-                        Visit Google Play Store
-                        </a>
-                    )}
-
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-[40px]">
+                    <div>
+                        <h2 className="font-display mb-[20px]">Project Description</h2>
+                        <div className="prose">
+                            <MDXComponent code={caseStudy.description} />
+                        </div>
+                    </div>
+                    <div>
+                        <h3 className="font-display mb-[20px]">Deliverables</h3>
+                        {caseStudy.deliverables && caseStudy.deliverables.length > 0 && (
+                            <ul className="text-[1.125rem] font-light font-sans]">
+                                {caseStudy.deliverables.map((deliverable, index) => (
+                                    <li key={index}>{deliverable}</li>
+                                ))}
+                            </ul>
+                        )}
+                    </div>
                 </div>
             </div>
-            <div className="prose prose-lg">
+            <div className="px-4 md:px-0 pt-[40px]">
                 <MDXComponent code={caseStudy.content} />
             </div>
         </div>

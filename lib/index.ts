@@ -1,5 +1,8 @@
 import { Post } from '@/.velite';
 
+export const BASEURL = process.env.NODE_ENV === "production" ? `https://${process.env.VERCEL_URL}` : 'http://localhost:3000';
+export const ONTAPURL = process.env.NODE_ENV === "production" ? `https://ontap.syncwaretechnologies.com` : 'http://localhost:3001';
+
 export function sortByPosition(posts: Array<any>) {
     return posts.sort((a, b) => {
         if (a.position < b.position) return -1;
