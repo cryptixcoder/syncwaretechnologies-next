@@ -15,6 +15,9 @@ export const metadata: Metadata = {
   },
   description: "We are a digital product design &amp; solutions agency focused on creating award-winning products using human-centered design and cutting-edge technology.",
   metadataBase: new URL(process.env.NEXT_PUBLIC_APP_URL ?? siteConfig.url),
+  openGraph: {
+    images: ['/preview.png']
+  }
 };
 
 export default function RootLayout({
