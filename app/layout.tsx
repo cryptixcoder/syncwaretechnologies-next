@@ -11,9 +11,9 @@ import { usePathname } from 'next/navigation';
 export const metadata: Metadata = {
   title: {
     template: "%s - Syncware Technologies, Inc.",
-    default: "Syncware Technologies Inc",
+    default: "Syncware Technologies Inc | Philly based product design and solutions agency",
   },
-  description: "We are a digital product design &amp; solutions agency focused on creating award-winning products using human-centered design and cutting-edge technology.",
+  description: "Philly based product design and solutions agency, partnering with companies to build great products.",
   metadataBase: new URL(process.env.NEXT_PUBLIC_APP_URL ?? siteConfig.url),
   openGraph: {
     images: ['/preview.png']
