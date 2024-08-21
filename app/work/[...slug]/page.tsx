@@ -8,6 +8,15 @@ interface PostPageProps {
     }
 }
 
+type CaseStudyType = {
+    title: string
+    slug: string 
+    description: string
+    deliverables: Array<string>
+    content: string
+}
+
+
 async function getPostFromParams(params: PostPageProps['params']) {
     const slug = params?.slug?.join("/");
     const post = caseStudies.find(post => post.slug === slug);
@@ -52,7 +61,7 @@ export async function generateMetadata({params}: PostPageProps){
 }
 
 export default async function WorkPage({ params }: PostPageProps) {
-    const caseStudy = await getPostFromParams(params);
+    const caseStudy: CaseStudyType = await getPostFromParams(params);
     return (
         <div className="pb-[40px]">
             {/* <div className="min-h-[500px] bg-cover bg-center bg-no-repeat border-b" style={{backgroundImage: `url('${caseStudy.cover}')`}}></div> */}

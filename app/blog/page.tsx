@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unescaped-entities */
 import { posts } from '#site/content'
 import { QueryPagination } from '@/components/QueryPagination'
 import { sortPostsByDate } from '@/lib'

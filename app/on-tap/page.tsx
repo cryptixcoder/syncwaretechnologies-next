@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unescaped-entities */
 import PriceTable from '@/components/ontap/PriceTable'
 import { caseStudies, services } from '#site/content';
 import { sortByPosition } from '@/lib';
