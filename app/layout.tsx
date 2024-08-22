@@ -6,7 +6,7 @@ import { Contact } from '@/components/contact';
 import { siteConfig } from '@/config/site';
 import Banner from '@/components/Banner';
 import { usePathname } from 'next/navigation';
-
+import { GoogleAnalytics } from '@next/third-parties/google'
 
 export const metadata: Metadata = {
   title: {
@@ -33,6 +33,7 @@ export default function RootLayout({
         {children}
         <Contact />
         <Footer />
+        <GoogleAnalytics gaId="G-RM6WNXTDP7" />
       </body>
     </html>
   );
