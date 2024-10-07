@@ -71,6 +71,23 @@ export default defineConfig({
                 description: s.string(),
                 position: s.number()
             }).transform((data:any) => ({ ...data }))
+        },
+        photography: {
+            name: "Photography",
+            pattern: "photography/**/*.mdx",
+            schema: s.object({
+                title: s.string(),
+                slug: s.slug('photography'),
+                date: s.isodate(),
+                photos: s.array(s.object({
+                    url: s.string(),
+                    width: s.number(),
+                    height: s.number()
+                })),
+                description: s.string().optional(),
+                type: s.string().optional(),
+                content: s.mdx()
+            }).transform((data:any)=>({...data, permalink: `/photography/${data.slug}`}))
         }
     }
 })

@@ -2,6 +2,8 @@ import Image from 'next/image';
 import * as runtime from 'react/jsx-runtime';
 import Container from './Container';
 import NarrowContainer from './NarrowContainer';
+import Gallery from './gallery/Gallery';
+import GalleryImage from './gallery/GalleryImage';
 
 const useMDXComponent = (code: string) => {
     const fn = new Function(code);
@@ -11,7 +13,9 @@ const useMDXComponent = (code: string) => {
 const components = {
     Image,
     Container,
-    NarrowContainer
+    NarrowContainer,
+    Gallery,
+    GalleryImage
 }
 
 interface MdxProps {

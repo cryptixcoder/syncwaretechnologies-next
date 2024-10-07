@@ -23,7 +23,7 @@ export default function Work() {
                         {caseStudies.map((caseStudy) => {
                             return (
                                 <Link key={caseStudy.slug} href={caseStudy.permalink} className="border-r border-b">
-                                    <div  >
+                                    <div>
                                         <div className="col-span-12 md:col-span-5">
                                             <img src={caseStudy.cover} alt="" className="w-full" />
                                         </div>

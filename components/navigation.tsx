@@ -1,12 +1,20 @@
 "use client"
 import { Disclosure, DisclosureButton, DisclosurePanel } from '@headlessui/react'
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline';
+import { usePathname } from "next/navigation";
 import Link from 'next/link'
+import clsx from "clsx";
 
 export const Navigation = () => {
+    const pathname = usePathname();
+    const isActive = (href: string) => pathname === href;
+    const isChild = (href: string) => {
+        return pathname && pathname.startsWith(href) && pathname !== href;
+    }
+
     return (
         <Disclosure as="header" className="py-4 border-b">
-            {({open}) => (
+            {({open, close}) => (
                 <>
                     <div className="px-4 md:px-0 container max-w-6xl">
                         <div className="flex justify-between items-center">
@@ -16,9 +24,22 @@ export const Navigation = () => {
                             </Link>
                         </div>
                         <nav className="hidden sm:flex font-display text-xl space-x-8 items-center">
-                            <Link href="/work" className="uppercase hover:underline">Work</Link>
-                            <Link href="/about" className="uppercase hover:underline">Agency</Link>
-                            <Link href="/blog" className="uppercase hover:underline">Blog</Link>
+                            <Link href="/work" className={clsx(
+                                "uppercase hover:text-primary-700",
+                                (isActive("/work") || isChild('/work')) && "text-primary-700"
+                            )}>Work</Link>
+                            <Link href="/about" className={clsx(
+                                "uppercase hover:text-primary-700",
+                                isActive("/about") && "text-primary-700"
+                            )}>Agency</Link>
+                            <Link href="/blog" className={clsx(
+                                "uppercase hover:text-primary-700",
+                                isActive("/blog") && "text-primary-700"
+                            )}>Blog</Link>
+                            <Link href="/photography" className={clsx(
+                                "uppercase hover:text-primary-700",
+                                (isActive("/photography") || isChild('/photography')) && "text-primary-700"
+                            )}>Photography</Link>
                             {/* <Link href="/on-tap" className="uppercase hover:underline">On-Tap</Link> */}
                             <Link href="https://cal.com/syncwaretechnologies/ontap-intro" target='_blank' className="transition ease-in-out duration-75 inline-flex items-center uppercase border-2 border-primary-700 text-primary-700 px-4 py-2 hover:bg-primary-700 hover:text-white">
                                 Book a call
@@ -41,9 +62,10 @@ export const Navigation = () => {
                     </div>
                     <DisclosurePanel className="sm:hidden">
                         <div className="pt-2 pb-3 space-y-1">
-                            <Link href="/work" className="block py-2 text-center  font-display text-xl font-medium uppercase hover:underline">Work</Link>
-                            <Link href="/about" className="block py-2 text-center  font-display text-xl font-medium uppercase hover:underline">Agency</Link>
-                            <Link href="/blog" className="block py-2 text-center  font-display text-xl font-medium uppercase hover:underline">Blog</Link>
+                            <Link href="/work" onClick={() => close()} className="block py-2 text-center  font-display text-xl font-medium uppercase hover:underline">Work</Link>
+                            <Link href="/about" onClick={() => close()} className="block py-2 text-center  font-display text-xl font-medium uppercase hover:underline">Agency</Link>
+                            <Link href="/blog" onClick={() => close()} className="block py-2 text-center  font-display text-xl font-medium uppercase hover:underline">Blog</Link>
+                            <Link href="/photography" onClick={() => close()} className="block py-2 text-center  font-display text-xl font-medium uppercase hover:underline">Photography</Link>
                             {/* <Link href="/on-tap" className="block py-2 text-center  font-display text-xl font-medium uppercase hover:underline">On-Tap</Link> */}
                         </div>
                     </DisclosurePanel>
