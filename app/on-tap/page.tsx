@@ -2,6 +2,7 @@
 import PriceTable from '@/components/ontap/PriceTable'
 import { caseStudies, services } from '#site/content';
 import { sortByPosition } from '@/lib';
+import PricingOptions from '@/components/ontap/PricingOptions';
 
 const monthlyServices = [
   {
@@ -67,6 +68,9 @@ export default async function Page() {
                     <h1 className="text-[32px] md:text-[64px] leading-tight font-sans">Finding your team's perfect designer or developer has always been a hassle. Worry no more! Welcome to On-Tap!</h1>
                 </div> */}
             </div>
+            <div className="max-w-6xl mx-auto">
+                <PricingOptions />
+            </div>
             <div className="py-[40px]">
                 <div className="container max-w-6xl">
                         {/* <div>
@@ -90,31 +94,6 @@ export default async function Page() {
                         )
                     })}
                     
-                </div>
-                <div className="py-[40px]">
-                    <div className="mx-auto max-w-6xl">
-                        <div>
-                            <h2 className="font-display text-center text-5xl uppercase mb-[40px]">How we work</h2>
-                        </div>
-                        <div className="grid grid-cols-2">
-                            <div>
-                                <p className="text-[48px] font-sans leading-[67px]">Add your tasks to our custom management platform and invite everyone you need on your team.</p>
-                            </div>
-                            <div></div>
-                        </div>
-                        <div className="grid grid-cols-2">
-                            <div></div>
-                            <div>
-                                <p className="text-[48px] font-sans leading-[67px]">We take care of the heavy lifting and knockout your tasks.</p>
-                            </div>
-                        </div>
-                        <div className="grid grid-cols-2">
-                            <div>
-                                <p className="text-[48px] font-sans leading-[67px]">Just rince and repeat, and if you're all set pause or cancel your subscription at any time</p>
-                            </div>
-                            <div></div>
-                        </div>
-                    </div>
                 </div>
         </div>
     )

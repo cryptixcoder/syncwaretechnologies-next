@@ -3,8 +3,15 @@ import { members } from '#site/content'
 import { Metadata } from 'next'
 import Image from 'next/image'
 
+import { siteConfig } from '@/config/site';
+
+const baseUrl = new URL(process.env.NEXT_PUBLIC_APP_URL ?? siteConfig.url)
+
 export const metadata:Metadata = {
-    title: "About Us"
+    title: "About Us",
+    openGraph: {
+        images: [`${baseUrl}/api/thumbnail?url=${encodeURIComponent(`${baseUrl}/about`)}`]
+    }
 }
 
 export default function About() {
@@ -96,6 +103,8 @@ export default function About() {
                         <div className="pt-[40px] space-y-[24px] border-t-0 md:border-t pl-0 md:pl-[40px]">
                             <h3 className="font-display text-[48px] leading-[65px]">04 - Development</h3>
                             <ul className="text-[24px] leading-[32px] space-y-[8px]">
+                                <li>OpenAI & Claude Dev</li>
+                                <li>RAG & AI Agent Development</li>
                                 <li>WordPress Development</li>
                                 <li>SaaS Development</li>
                                 <li>React Native Development</li>

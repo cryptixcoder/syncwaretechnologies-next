@@ -40,7 +40,7 @@ export const Navigation = () => {
                                 "uppercase hover:text-primary-700",
                                 (isActive("/photography") || isChild('/photography')) && "text-primary-700"
                             )}>Photography</Link>
-                            {/* <Link href="/on-tap" className="uppercase hover:underline">On-Tap</Link> */}
+                            <a href="https://ontap.syncwaretechnologies.com" className="uppercase hover:underline">On-Tap</a>
                             <Link href="https://cal.com/syncwaretechnologies/ontap-intro" target='_blank' className="transition ease-in-out duration-75 inline-flex items-center uppercase border-2 border-primary-700 text-primary-700 px-4 py-2 hover:bg-primary-700 hover:text-white">
                                 Book a call
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="ml-2 size-6">

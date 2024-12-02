@@ -5,8 +5,9 @@ import { Footer } from '@/components/footer';
 import { Contact } from '@/components/contact';
 import { siteConfig } from '@/config/site';
 import Banner from '@/components/Banner';
-import { usePathname } from 'next/navigation';
+import { usePathname, useSearchParams } from 'next/navigation';
 import { GoogleAnalytics } from '@next/third-parties/google'
+const baseUrl = new URL(process.env.NEXT_PUBLIC_APP_URL ?? siteConfig.url)
 
 export const metadata: Metadata = {
   title: {
@@ -14,9 +15,9 @@ export const metadata: Metadata = {
     default: "Syncware Technologies Inc | Philly based product design and solutions agency",
   },
   description: "Philly based product design and solutions agency, partnering with companies to build great products.",
-  metadataBase: new URL(process.env.NEXT_PUBLIC_APP_URL ?? siteConfig.url),
+  metadataBase: baseUrl,
   openGraph: {
-    images: ['/preview.png']
+    images: [`${baseUrl}/api/thumbnail?url=${encodeURIComponent(`${baseUrl}`)}`]
   }
 };
 
@@ -28,7 +29,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        {/* <Banner /> */}
+        <Banner />
         <Navigation />
         {children}
         <Contact />

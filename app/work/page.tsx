@@ -2,9 +2,15 @@
 import {caseStudies} from '#site/content'
 import { Metadata } from 'next'
 import Link from 'next/link'
+import { siteConfig } from '@/config/site';
+
+const baseUrl = new URL(process.env.NEXT_PUBLIC_APP_URL ?? siteConfig.url)
 
 export const metadata:Metadata = {
-    title: "Our Work"
+    title: "Our Work",
+    openGraph: {
+        images: [`${baseUrl}/api/thumbnail?url=${encodeURIComponent(`${baseUrl}/work`)}`]
+    }
 }
 
 export default function Work() {

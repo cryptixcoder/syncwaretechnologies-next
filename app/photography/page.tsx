@@ -7,9 +7,15 @@ import { QueryPagination } from '@/components/QueryPagination'
 import { sortPostsByDate } from '@/lib'
 import { Metadata } from 'next'
 import Link from 'next/link'
+import { siteConfig } from '@/config/site';
 
-export const metadata: Metadata = {
-    title: "Photography Portfolio"
+const baseUrl = new URL(process.env.NEXT_PUBLIC_APP_URL ?? siteConfig.url)
+
+export const metadata:Metadata = {
+    title: "Photography Portfolio",
+    openGraph: {
+        images: [`${baseUrl}/api/thumbnail?url=${encodeURIComponent(`${baseUrl}/work`)}`]
+    }
 }
 
 export default function Photography() {
