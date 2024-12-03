@@ -17,7 +17,7 @@ export const metadata: Metadata = {
   description: "Philly based product design and solutions agency, partnering with companies to build great products.",
   metadataBase: baseUrl,
   openGraph: {
-    images: [`${baseUrl}/api/thumbnail?url=${encodeURIComponent(`${baseUrl}`)}`]
+    images: [`${baseUrl}api/thumbnail?url=${encodeURIComponent(`${baseUrl}`)}`]
   }
 };
 

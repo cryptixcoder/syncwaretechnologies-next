@@ -19,6 +19,14 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
             url: "https://www.syncwaretechnologies.com/blog",
             lastModified: new Date().toISOString()
         },
+        {
+            url: "https://www.syncwaretechnologies.com/photography",
+            lastModified: new Date().toISOString()
+        },
+        {
+            url: "https://ontap.syncwaretechnologies.com/",
+            lastModified: new Date().toISOString()
+        },
     ];
 
     const blogPosts = posts.filter(post => post.published);
