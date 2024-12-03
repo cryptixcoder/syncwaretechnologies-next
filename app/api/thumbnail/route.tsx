@@ -1,4 +1,5 @@
 import { NextResponse } from 'next/server';
+import chromium from 'chrome-aws-lambda'
 import puppeteer from 'puppeteer';
 
 export async function GET(req: Request) {
@@ -7,7 +8,11 @@ export async function GET(req: Request) {
 
     if(url) {
         try {
-            const browser = await puppeteer.launch();
+            const browser = await puppeteer.launch({
+                args: chromium.args,
+                executablePath: await chromium.executablePath,
+                headless: true,
+            });
             const page = await browser.newPage();
             await page.setViewport({width: 1920, height: 1024});
             await page.goto(url);
