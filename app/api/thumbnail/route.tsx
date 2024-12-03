@@ -1,6 +1,6 @@
 import { NextResponse } from 'next/server';
 import chromium from 'chrome-aws-lambda'
-import puppeteer from 'puppeteer';
+import puppeteer from 'puppeteer-core';
 
 export async function GET(req: Request) {
     const { searchParams } = new URL(req.url);
